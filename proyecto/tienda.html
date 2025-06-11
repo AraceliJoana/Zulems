@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+ <meta charset="UTF-8">
+<html lang="es">
+<head>
+  <title>Zulem - Tienda</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="volver">
+    <a href="index.html" class="btn-volver">Volver al inicio</a>
+    <a href="contacto.html" class="btn-volver">Contáctanos</a>
+  </div>
+
+
+  <nav>
+    <button onclick="showSection('maquillaje')">Maquillaje</button>
+    <button onclick="showSection('skincare')">Skincare</button>
+    <button onclick="showSection('accesorios')">Accesorios</button>
+    <div id="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
+  </nav>
+
+  <main id="main">
+    <!-- Maquillaje -->
+    <section id="maquillaje" class="product-section">
+      <h2>Maquillaje</h2>
+      <div class="product" data-name="Labial" data-price="120">
+        <img src="labial.jpg.png" alt="Labial">
+        <h3>Labial Mate Rojo</h3>
+        <p>$120 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+      <div class="product" data-name="Base" data-price="250">
+        <img src="baseliquida.jpg.png" alt="Base">
+        <h3>Base Líquida</h3>
+        <p>$250 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+      <div class="product" data-name="Rimel" data-price="180">
+        <img src="rimel.jpg.png" alt="Rímel">
+        <h3>Rímel</h3>
+        <p>$180 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+    </section>
+
+    <!-- Skincare -->
+    <section id="skincare" class="product-section">
+      <h2>Skincare</h2>
+      <div class="product" data-name="Serum" data-price="200">
+        <img src="serum.jpg.png" alt="Sérum">
+        <h3>Sérum Facial</h3>
+        <p>$200 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+      <div class="product" data-name="Tonico" data-price="150">
+        <img src="tonico.jpg.png" alt="Tónico">
+        <h3>Tónico Refrescante</h3>
+        <p>$150 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+      <div class="product" data-name="Mascarilla" data-price="220">
+        <img src="mascarrilla.jpg.png" alt="Mascarilla">
+        <h3>Mascarilla Facial</h3>
+        <p>$220 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+    </section>
+
+    <!-- Accesorios -->
+    <section id="accesorios" class="product-section">
+      <h2>Accesorios</h2>
+      <div class="product" data-name="Brochas" data-price="300">
+        <img src="set.jpg.png" alt="Brochas">
+        <h3>Set de Brochas</h3>
+        <p>$300 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+      <div class="product" data-name="Esponja" data-price="90">
+        <img src="esponja.jpg.png" alt="Esponja">
+        <h3>Esponja Blender</h3>
+        <p>$90 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+      <div class="product" data-name="Enchinador" data-price="100">
+        <img src="enchinador.jpg.png" alt="Enchinador">
+        <h3>Enchinador</h3>
+        <p>$100 MXN</p>
+        <button onclick="addToCart(this)">Agregar al carrito</button>
+      </div>
+    </section>
+  </main>
+
+ <aside id="cart" class="hidden">
+    <h2>Carrito</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: $<span id="total">0</span> MXN</p>
+    <button onclick="clearCart()">Vaciar carrito</button>
+    <button onclick="showPaymentForm()">Pagar</button>
+  </aside>
+
+  <div id="payment-form">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+      <img src="zulem.png.png" alt="Logo Zulem" style="width: 30px; height: 30px;">
+      <h2 style="margin: 0; color: #d33f6a;">Zulem</h2>
+    </div>
+    <input type="text" placeholder="Número de tarjeta" maxlength="19">
+    <input type="text" placeholder="Titular de la tarjeta">
+    <input type="text" placeholder="Fecha de expiración (MM/AA)">
+    <input type="text" placeholder="CVC" maxlength="3">
+    <button onclick="submitPayment()">Pagar</button>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function showSection(id) {
+      document.querySelectorAll('.product-section').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function addToCart(button) {
+      const p = button.parentElement;
+      cart.push({
+        name: p.getAttribute('data-name'),
+        price: Number(p.getAttribute('data-price'))
+      });
+      updateCart();
+    }
+
+    function updateCart() {
+      const list = document.getElementById('cart-items');
+      const total = document.getElementById('total');
+      const count = document.getElementById('cart-count');
+      list.innerHTML = '';
+      let sum = 0;
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - $${item.price} MXN`;
+        list.appendChild(li);
+        sum += item.price;
+      });
+      total.textContent = sum;
+      count.textContent = cart.length;
+    }
+
+    function toggleCart() {
+      document.getElementById('cart').classList.toggle('hidden');
+    }
+
+    function clearCart() {
+      cart = [];
+      updateCart();
+    }
+
+    function showPaymentForm() {
+      if (cart.length === 0) {
+        alert("Agrega productos al carrito antes de pagar.");
+        return;
+      }
+      document.getElementById('payment-form').style.display = 'block';
+    }
+
+    function submitPayment() {
+  const inputs = document.querySelectorAll('#payment-form input');
+  const numero = inputs[0].value;
+  const titular = inputs[1].value;
+  const expira = inputs[2].value;
+  const cvc = inputs[3].value;
+
+  if (cart.length === 0 || !numero || !titular || !expira || !cvc) {
+    alert("Completa todos los campos y agrega productos.");
+    return;
+  }
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  fetch('guardar_carrito.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      productos: cart,
+      total: total,
+      tarjeta: {
+        numero: numero,
+        titular: titular,
+        expira: expira,
+        cvc: cvc
+      }
+    })
+  })
+  .then(res => res.text())
+  .then(msg => {
+    alert(msg);
+    document.getElementById('payment-form').style.display = 'none';
+    clearCart();
+  })
+  .catch(err => {
+    alert("Error al procesar el pago.");
+    console.error(err);
+  });
+}
+
+
+    showSection('maquillaje');
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fef5f8;
+  color: #333;
+}
+
+.inicio {
+  background-color: #FFD1DC;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.header-inicio h1 {
+  font-size: 3em;
+  color: #d33f6a;
+}
+
+.logo-grande {
+  width: 300px;
+  margin: 20px 0;
+}
+
+.btn-entrar {
+  display: inline-block;
+  background-color: #d33f6a;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #d33f6a;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.product-section {
+  display: none;
+  text-align: center;
+  padding: 30px;
+}
+
+.product {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 20px auto;
+  width: 260px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product button {
+  background-color: #d33f6a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#cart {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  background: white;
+  padding: 50px;
+  width: 260px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-volver {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #d33f6a;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.volver {
+  text-align: left;
+  padding: 10px;
+}
+
+
+/* ... tus estilos anteriores ... */
+
+.form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #d33f6a;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 2px solid #ffd1dc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+form button {
+  margin-top: 20px;
+  background-color: #d33f6a;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1em;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Contacto formulario */
+.formulario-contacto {
+  max-width: 500px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+.formulario-contacto form {
+  display: flex;
+  flex-direction: column;
+}
+.formulario-contacto input,
+.formulario-contacto textarea {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.formulario-contacto h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #d33f6a;
+}
+
+/* Formulario de pago emergente */
+#payment-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff0f3;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  width: 320px;
+  text-align: center;
+  display: none;
+  z-index: 1000;
+}
+
+#payment-form h2 {
+  color: #d33f6a;
+}
+
+#payment-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#payment-form button {
+  background-color: #d33f6a;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#payment-form {
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  width: 300px;
+  z-index: 1000;
+}
+#payment-form input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+#payment-form button {
+  width: 100%;
+  padding: 10px;
+  background: #d33f6a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
